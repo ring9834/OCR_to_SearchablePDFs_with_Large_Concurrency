@@ -2,7 +2,9 @@
 This code has passed tests and can be directly used in productions.
 
 There are two approaches provided here to implement large concurrency when generating searchable PDFs from scanned or snapped image files:
+
 First one: Object Pool + Channel&lt;T>.
+
 Second one: ThreadLocal&lt;T> + Channel&lt;T>.
 
 The first approach is suggested because it provides explicit, bounded control over expensive OCR instances. PaddleOCR objects are heavy—they load large models, allocate significant native memory/tensors, and are not always safe for unrestricted concurrent use. An object pool lets us pre-create and reuse a fixed small number of these instances (2–4 for GPU), preventing memory explosion and OOM errors while maintaining high throughput. Paired with a bounded System.Threading.Channels Channel, producers enqueue images asynchronously and a controlled set of workers borrow/return instances, creating natural backpressure and clean decoupling of I/O from heavy inference.
