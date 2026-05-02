@@ -9,4 +9,4 @@ ConcurrentDictionary,
 
 EnumerateDirectories
 
-ThreadLocal<T>
+ThreadLocal&lt;T>
