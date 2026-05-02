@@ -1,4 +1,4 @@
-# OCR to SearchPDFs with Large Concurrency
+# OCR Processing for Searchable PDFs at Large Scale and High Concurrency
 This code has passed tests and can be directly used in production with minor adjustments based on specific requirements.
 
 There are two approaches provided here to implement large concurrency when generating searchable PDFs from scanned or snapped image files:
